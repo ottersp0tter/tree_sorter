@@ -98,8 +98,5 @@ df = pd.DataFrame(df_dict)
 df_groupby = df.groupby('risk_rating')['number'].apply(list)
 
 
-
-for row in df_groupby:
-    sentence_maker(row, row('risk_rating'))
-
-# sentence_maker(four_D,'4d')
+for i in range(df_groupby.index.size):
+    sentence_maker(df_groupby.iloc[i], df_groupby.index[i][0:2])
