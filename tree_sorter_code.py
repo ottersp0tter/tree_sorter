@@ -77,14 +77,29 @@ def sentence_maker(my_list, risk):
     word_count = number_words_dict[my_count]
     print(word_count + " (" + str(my_count) + ")" + ' trees numbered ' + my_string + ' have a ' + risk_level[risk] + ' risk rating (' + risk + ') as they are ' + probability[risk[1]] + ' to fail in a ' + occupation[risk[0]] + ' use area.')
 
+# four_D = []
 
-tree_data = 
+tree_name_list = []
+tree_risk_list = []
+
 for i in range(num_rows):
     tree_name = data_dict['Tree'][i]
     tree_risk = data_dict['Tree Risk Rating'][i]
-
-    # if is_tree(tree_name):
-    #     if is_tree(tree_risk):
+    if is_tree(tree_name):
+        if is_tree(tree_risk):
+            tree_name_list.append(tree_name)
+            tree_risk_list.append(tree_risk)
 
             # if '4d' in tree_risk:
             #     four_D.append(tree_name)
+
+df_dict = {'number':tree_name_list, 'risk_rating':tree_risk_list}
+df = pd.DataFrame(df_dict)
+df_groupby = df.groupby('risk_rating')['number'].apply(list)
+
+
+
+for row in df_groupby:
+    sentence_maker(row, row('risk_rating'))
+
+# sentence_maker(four_D,'4d')
