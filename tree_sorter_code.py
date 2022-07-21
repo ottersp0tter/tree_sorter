@@ -75,7 +75,10 @@ def sentence_maker(my_list, risk):
     my_string = ', '.join(str(x) for x in my_list)
     my_count = len(my_list)
     word_count = number_words_dict[my_count]
-    print(word_count + " (" + str(my_count) + ")" + ' trees numbered ' + my_string + ' have a ' + risk_level[risk] + ' risk rating (' + risk + ') as they are ' + probability[risk[1]] + ' to fail in a ' + occupation[risk[0]] + ' use area.')
+    if my_count == 1:
+        print(word_count + " (" + str(my_count) + ")" + ' tree numbered ' + my_string + ' has a ' + '\033[1m' + risk_level[risk] + '\033[0m' + ' risk rating (' + risk + ') as it is ' + '\033[1m' + probability[risk[1]] + '\033[0m' + ' to fail in a ' + '\033[1m' + occupation[risk[0]] + '\033[0m' + ' use area.')
+    else:
+        print(word_count + " (" + str(my_count) + ")" + ' trees numbered ' + my_string + ' have a ' + '\033[1m' + risk_level[risk] + '\033[0m' + ' risk rating (' + risk + ') as they are ' + '\033[1m' + probability[risk[1]] + '\033[0m' + ' to fail in a ' + '\033[1m' + occupation[risk[0]] + '\033[0m' + ' use area.')
 
 # four_D = []
 
